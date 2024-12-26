@@ -15,7 +15,7 @@ services:
 
   backend:
 #    build: ./  # Сборка backend-контейнера из образа.
-    image: akolmychek/test_prog:latest
+    image: akolmychek/test_proj:latest
     env_file: .env
     volumes:
       - static_volume:/app/static
