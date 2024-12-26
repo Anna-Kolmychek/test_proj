@@ -11,19 +11,17 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    restart: always
 
   backend:
 #    build: ./  # Сборка backend-контейнера из образа.
     image: akolmychek/test_proj:latest
     env_file: .env
     volumes:
-      - static_volume:/app/static_backend
+      - static_volume:/app/static
       - media_volume:/app/media
     depends_on:
       db:
         condition: service_healthy
-    restart: always
 
   nginx:
     image: nginx:latest
@@ -35,7 +33,6 @@ services:
       - media_volume:/var/html/media
     depends_on:
       - backend
-    restart: always
 
 volumes:
   postgres_data:
