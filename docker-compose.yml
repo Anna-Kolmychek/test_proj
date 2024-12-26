@@ -17,7 +17,7 @@ services:
     image: akolmychek/test_proj:latest
     env_file: .env
     volumes:
-      - static_volume:/app/static
+      - static_volume:/app/static_backend
       - media_volume:/app/media
     depends_on:
       db:
