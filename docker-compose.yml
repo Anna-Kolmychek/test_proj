@@ -14,11 +14,11 @@ services:
 
   backend:
 #    build: ./  # Сборка backend-контейнера из образа.
-    image: akolmychek/test_proj:latest
+    image: akolmychek/app:latest
     env_file: .env
     volumes:
-      - static_volume:/test_proj/static
-      - media_volume:/test_proj/media
+      - static_volume:/app/static
+      - media_volume:/app/media
     depends_on:
       db:
         condition: service_healthy
