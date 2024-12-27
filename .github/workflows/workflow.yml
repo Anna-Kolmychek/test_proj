@@ -40,7 +40,7 @@ jobs:
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSPHRASE }}
           source: "nginx.conf"
-          target: "test_proj"
+          target: "/var/www/html/test_proj1"
       - name: Copy docker-compose.yml via ssh
         uses: appleboy/scp-action@master
         with:
@@ -48,7 +48,7 @@ jobs:
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSPHRASE }}
           source: "docker-compose.yml"
-          target: "test_proj"
+          target: "/var/www/html/test_proj1"
       - name: Executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
@@ -56,7 +56,7 @@ jobs:
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSPHRASE }}
           script: |
-            cd test_proj
+            cd /var/www/html/test_proj1
             sudo docker compose -f docker-compose.yml down -v
             sudo docker image prune -af
             sudo docker compose -f docker-compose.yml up -d
