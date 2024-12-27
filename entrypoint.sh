@@ -7,11 +7,11 @@ python manage.py migrate
 #python manage.py import_test_data
 
 
-#mkdir -p /app/static_backend
+mkdir -p /test_proj/static
 echo "Collect static files..."
 python manage.py collectstatic --noinput
-#echo "Copy static files..."
-#cp -r /app/staticfiles/. /app/static_backend/
+echo "Copy static files..."
+cp -r /test_proj/staticfiles/. /test_proj/static/
 
 # Start gunicorn and daphne
 echo "Starting gunicorn..."
